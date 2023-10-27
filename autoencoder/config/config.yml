@@ -1,0 +1,42 @@
+input_file: deep_learning_sample_small.csv
+working_dir: "/content/working_dir"
+
+preprocessing:
+  test_size: 0.1
+  random_seed: 66
+
+fasttext_embedding:
+  size_embedding_vector: 150
+  training_epochs: 10
+  skip_gram: 0
+  window: 5
+  truncate_vectors_to_x_words: 64
+
+dataloader:
+  shuffle: True
+  random_seed: 66
+  batch_size: 200
+
+simple_autoencoder:
+  size_latent_space: 50
+
+cnn_autoencoder:
+  size_latent_space: 380  # this needs to be synced with the actual model topology!
+
+rnn_autoencoder:
+  size_latent_space: 300
+
+autoencoder_trainer:
+  num_epochs: 60
+  learning_rate: 0.001
+
+wordpiece_tokenizer:
+  vocab_size: 2000
+  number_of_tokens_per_datapoint: 128  # bert max 512
+  fixed_position_of_values: False
+
+embedding_layer:
+  size_of_embeddings: 300  # bert: 768
+
+classifier_neural_net:
+  num_epochs: 40
